@@ -1,0 +1,42 @@
+.q-button {
+    border: none;
+    background-color: #fff;
+}
+
+.q-button:hover {
+    color: rgb(35, 28, 134) !important;
+    cursor: pointer;
+}
+
+.mat-subtitle-1 {
+    font-size: 16px;
+}
+
+.mat-body-1 {
+    font-size: 15px;
+}
+
+.add-button {
+    float: right !important;
+    font-size: 80%;
+    margin-right: 16px;
+    font-weight: 400;
+}
+
+.add-button:hover {
+    background-color: rgb(5, 0, 71) !important;
+}
+
+.search-box {
+    margin-left: 20px;
+    height: 28px;
+}
+
+.mat-mdc-card-header {
+    flex-direction: column;
+}
+
+.mat-button-toggle-checked {
+    font-weight: 700;
+    border-bottom: 1px solid rgb(85, 85, 85);
+}

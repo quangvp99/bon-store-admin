@@ -1,0 +1,82 @@
+<mat-card class="cardWithShadow">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">
+            <span>Sản phẩm mới</span>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="m-t-30" [formGroup]="productForm">
+            <div class="row">
+                <div class="col-6 table-responsive">
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Mã sản phẩm</mat-label>
+                    <mat-form-field appearance="outline" class="w-80" color="primary">
+                        <input matInput formControlName="code" />
+                    </mat-form-field>
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Đường dẫn</mat-label>
+                    <mat-form-field appearance="outline" class="w-80" color="primary">
+                        <input matInput formControlName="path" />
+                    </mat-form-field>
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Tên sản phẩm</mat-label>
+                    <mat-form-field appearance="outline" class="w-80" color="primary">
+                        <input matInput formControlName="name" />
+                    </mat-form-field>
+                    <!-- <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Danh mục</mat-label> -->
+                    <!-- <mat-form-field appearance="outline" class="w-80" color="primary">
+                        <mat-label>Chọn</mat-label>
+                        <mat-select formControlName="categoryId">
+                            <mat-option *ngFor="let category of categoryData" [value]="category.id">{{ category.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> -->
+                    <div style="display: flex;">
+                        <div>
+                            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Giá</mat-label>
+                            <mat-form-field appearance="outline" class="w-80" color="primary">
+                                <input matInput formControlName="price" />
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Giảm giá</mat-label>
+                            <mat-form-field appearance="outline" class="w-80" color="primary">
+                                <input matInput formControlName="sale" />
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 table-responsive">
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Ảnh nhỏ</mat-label>
+                    <mat-form-field appearance="outline" class="w-40" color="primary">
+                        <ngx-mat-file-input (change)="onFileChanged($event)"></ngx-mat-file-input>
+                        <mat-icon matSuffix>image</mat-icon>
+                        <img [src]="url" class="thumnail" alt="">
+                    </mat-form-field>
+                    <!-- <button mat-flat-button color="primary" class="w-20" (click)="onUploadFile()">Upload Anh</button> -->
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Ảnh mô tả</mat-label>
+                    <mat-form-field appearance="outline" class="w-40" color="primary">
+                        <ngx-mat-file-input multiple (change)="selectFiles($event)"></ngx-mat-file-input>
+                        <mat-icon matSuffix>image</mat-icon>
+                        <div class="list-image">
+                            <img *ngFor='let preview of previews' [style]="previews.length == 1 ? '' : 'border: 1px solid #555555; padding: 2px; margin: 2px;'" [src]="preview" class="preview">
+                        </div>
+                    </mat-form-field>
+                    <!-- <button mat-flat-button color="primary" class="w-20" (click)="onUploadFileList()">Upload Anh</button> -->
+                </div>
+                <div class="col-12 table-responsive">
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Mô tả ngắn</mat-label>
+                    <mat-form-field appearance="outline" class="w-90" color="primary">
+                        <textarea matInput style="height: 80px;" formControlName="shortDes"></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 table-responsive">
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Mô tả</mat-label>
+                    <ckeditor formControlName="description" class="w-90" [editor]="editor" [data]="data"></ckeditor>
+                </div>
+            </div>
+
+            <div class="q-btn">
+                <button mat-flat-button color="primary" class="w-20" (click)="onCreate()">Lưu</button>
+                <button mat-flat-button color="warn" class="w-20" (click)="listProd()">Đóng</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

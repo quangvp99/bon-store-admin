@@ -1,0 +1,50 @@
+.q-btn {
+    display: flex;
+    justify-content: right;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-right: 10%;
+}
+
+.q-btn button {
+    margin: 0 10px;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-40 {
+    width: 40%;
+    max-width: 80%;
+    // overflow: auto;
+}
+
+.thumnail {
+    max-width: 150px;
+    margin: 20px;
+}
+
+.thumnail:hover {
+    cursor: pointer;
+}
+
+.preview {
+    max-width: 100px;
+}
+
+.list-image {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    max-height: 200px;
+    overflow: auto;
+}
+
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 500px !important;
+    max-height: 800px !important;
+}
+
+:host ::ng-deep .ck-editor {
+    max-width: 90% !important;
+}

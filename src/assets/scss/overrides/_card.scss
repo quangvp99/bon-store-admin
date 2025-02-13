@@ -1,0 +1,46 @@
+// card
+.mat-mdc-card {
+    margin-bottom: 30px;
+    border-radius: $border-radius;
+}
+
+.mat-mdc-card-header {
+    padding: 24px 24px 0;
+}
+
+.mat-mdc-card-content {
+    padding: 0px 24px;
+    // margin: 0 auto;
+    // margin-left: 5%;
+}
+
+.mat-mdc-card {
+    background-color: $cardbg;
+}
+
+.cardWithShadow {
+    box-shadow: $cardshadow !important;
+}
+
+.mat-mdc-card-title {
+    line-height: 1.6rem;
+}
+
+.mdc-card__actions {
+    padding: 24px;
+}
+
+.theme-card.mat-mdc-card {
+    .mat-mdc-card-header {
+        padding: 10px 24px;
+    }
+    .mat-mdc-card-content {
+        padding: 0px 24px;
+    }
+}
+
+// chip
+.mat-mdc-chip {
+    height: 24px;
+    font-size: 14px;
+}

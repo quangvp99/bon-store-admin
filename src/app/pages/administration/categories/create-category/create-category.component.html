@@ -1,0 +1,41 @@
+<mat-card class="cardWithShadow boxed-auth">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">
+            <span *ngIf="id == 0">Tạo danh mục</span>
+            <span *ngIf="id != 0">Sửa danh mục</span>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="m-t-30" [formGroup]="categoryForm">
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Mã danh mục</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput formControlName="code" />
+            </mat-form-field>
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Đường dẫn</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput formControlName="path" />
+            </mat-form-field>
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Tên danh mục</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput formControlName="name" />
+            </mat-form-field>
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Danh mục cha</mat-label>
+            <!-- <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput formControlName="parentId" />
+            </mat-form-field> -->
+            <mat-form-field class="w-100" color="primary">
+                <select formControlName="parentId" #selectItem (change)="insertPath(selectItem.value)" matNativeControl>
+                    <option value="0" selected>Chọn</option>
+                    <option *ngFor="let category of categories" [value]="category.id">
+                        {{ category.name }}
+                    </option>
+                </select>
+            </mat-form-field>
+
+            <div class="q-btn">
+                <button mat-flat-button color="primary" class="w-20" (click)="onUpdateCategory()">Lưu</button>
+                <button mat-flat-button matDialogClose color="warn" class="w-20">Đóng</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

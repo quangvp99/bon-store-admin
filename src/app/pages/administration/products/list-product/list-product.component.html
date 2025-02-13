@@ -1,0 +1,97 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">
+            <span>Sản phẩm</span>
+            <input class="search-box" matInput placeholder="Tìm kiếm" (keyup)="applyFilter($event)" autocomplete="on">
+            <button mat-flat-button color="primary" (click)="createProd()" class="add-button">
+                Thêm mới
+            </button>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+        <div class="row">
+            <div class="col-12 table-responsive m-t-16">
+                <table mat-table [dataSource]="dataSource" class="w-100">
+                    <ng-container matColumnDef="code">
+                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                            Mã sản phẩm
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                            {{ element.code }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="imgUrl">
+                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                            Ảnh
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                            <img src="{{element.imgUrl}}" style="max-width: 60px;" />
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                            Tên
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                            {{ element.name }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="path">
+                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                            Đường dẫn
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                            {{ element.path }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="categoryName">
+                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                            Giá
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                            {{ element.price | number:'1.0-0' }}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="sale">
+                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                            Giảm giá
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                            {{ element.sale }}%
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                            Trạng thái
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                            <mat-button-toggle-group #group="matButtonToggleGroup" value="{{element.status}}" appearance="legacy" name="fontStyle" aria-label="Font Style">
+                                <mat-button-toggle (click)="changeStatus(element.id, 1)" value="1">ON</mat-button-toggle>
+                                <mat-button-toggle (click)="changeStatus(element.id, 0)" value="0">OFF</mat-button-toggle>
+                            </mat-button-toggle-group>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                            Hành động
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                            <button class="q-button" (click)="editProd(element.id)">
+                                <mat-icon matListItemIcon class="mat-icon">edit</mat-icon>
+                            </button>
+                            <button class="q-button" (click)="deleteProduct(element.id)">
+                                <mat-icon matListItemIcon class="mat-icon">delete</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+            </div>
+        </div>
+    </mat-card-content>
+    <div class="pagination">
+        <mat-paginator [pageSizeOptions]="[10, 15, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+</mat-card>
